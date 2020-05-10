@@ -1,0 +1,10 @@
+<?php
+return [
+    'components' => [
+        'Db' => [
+            'user' => 'root',
+            'password' => 'password',
+            'db' => 'qatl-test-php.local',
+        ]
+    ]
+];
