@@ -1,36 +1,36 @@
 <?php
 
 /**
- * Class AuthorController
- * API author
+ * Class PublisherController
+ * API Publisher
  */
-Class AuthorController extends ApiController
+Class PublisherController extends ApiController
 {
     /**
-     * List authors
-     * GET /author
+     * List publisher
+     * GET /publisher
      */
     public function actionIndex()
     {
-        if (!$data = Author::model()->getAll())
-            return $this->response("Authors not found", 404);
+        if (!$data = Publisher::model()->getAll())
+            return $this->response("Publishers not found", 404);
         return $this->response($data, 200);
     }
 
     /**
-     * View Author
-     * GET /author?id=100500
+     * View publisher
+     * GET /publisher?id=100500
      */
     public function actionView()
     {
-        if (!$data = Author::model()->getOne($this->id))
-            return $this->response("Author with id={$this->id} not found", 404);
+        if (!$data = Publisher::model()->getOne($this->id))
+            return $this->response("Publisher with id={$this->id} not found", 404);
         return $this->response($data, 200);
     }
 
     /**
-     * Create Author
-     * POST /author?name=ololosh
+     * Create Publisher
+     * POST /publisher?name=ololosh
      */
     public function actionCreate()
     {
@@ -39,7 +39,7 @@ Class AuthorController extends ApiController
         if (empty($name))
             return $this->response('Error, name is required', 500);
 
-        if (!Author::model()->add($name))
+        if (!Publisher::model()->add($name))
             $this->response('Database server error', 400);
 
         return $this->response($name, 200);
@@ -47,8 +47,8 @@ Class AuthorController extends ApiController
     }
 
     /**
-     * Update Author
-     * PUT /author?id=100500&name=ololosh
+     * Update Publisher
+     * PUT /publisher?id=100500&name=ololosh
      */
     public function actionUpdate()
     {
@@ -57,10 +57,10 @@ Class AuthorController extends ApiController
         if (!$this->id || empty($name))
             return $this->response('Check params', 400);
 
-        if (!$item = Author::model()->getOne($this->id))
-            return $this->response('Author not found', 404);
+        if (!$item = Publisher::model()->getOne($this->id))
+            return $this->response('Publisher not found', 404);
 
-        if (!Author::model()->update($this->id, $name))
+        if (!Publisher::model()->update($this->id, $name))
             return $this->response('Database server error', 500);
 
 
@@ -70,18 +70,18 @@ Class AuthorController extends ApiController
     }
 
     /**
-     * Delete Author
-     * DELETE /author?id=10
+     * Delete Publisher
+     * DELETE /publisher?id=10
      */
     public function actionDelete()
     {
         if (!$this->id)
             return $this->response('Id is required', 400);
 
-        if (!$item = Author::model()->getOne($this->id)) {
-            return $this->response('Author not found', 404);
+        if (!$item = Publisher::model()->getOne($this->id)) {
+            return $this->response('Publisher not found', 404);
         }
-        if (!Author::model()->deleteByPk($this->id))
+        if (!Publisher::model()->deleteByPk($this->id))
             return $this->response('Database server error', 500);
 
         return $this->response('Delete successful', 200);

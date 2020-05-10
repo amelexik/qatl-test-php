@@ -1,14 +1,16 @@
 <?php
 
 /**
- * Class Services
+ * Model Of Publishing House
+ * Class Publisher
  */
-Class Author extends Model
+Class Publisher extends Model
 {
-    var $table = 'author';
+    var $table = 'publisher';
+
 
     /**
-     * Add author
+     * Add new publisher
      * @param $name
      * @return mixed
      */
@@ -22,7 +24,7 @@ Class Author extends Model
     }
 
     /**
-     * Update Author
+     * Update publisher
      * @param $id
      * @param $name
      * @return mixed
