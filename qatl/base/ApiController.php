@@ -40,6 +40,10 @@ abstract class ApiController extends Controller
         $this->requestUri = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
         $this->requestParams = $_REQUEST;
 
+        $this->requestParams = array_map("trim", $this->requestParams);
+        $this->requestParams = array_map("htmlspecialchars", $this->requestParams);
+        $this->requestParams = array_map("strip_tags", $this->requestParams);
+
         if (isset($_REQUEST['id'])) {
             $this->id = filter_var($_REQUEST['id'], FILTER_VALIDATE_INT);
         }
