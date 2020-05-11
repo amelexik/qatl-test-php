@@ -81,6 +81,7 @@ Class Book extends Model
      * @param array $author
      * @param $publisher
      * @return bool
+     * TODO USE TRANSACTION, OPTIMIZE CODE
      */
     public function update($id, $name, $publisher, array $author)
     {
@@ -126,6 +127,8 @@ Class Book extends Model
                 $this->db->execute($query, [':book_id' => $id, ':author_id' => $authorId]);
             }
         }
+
+        return true;
     }
 
 }
