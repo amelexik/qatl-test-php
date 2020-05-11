@@ -124,4 +124,19 @@ Class Db extends Component
         }
     }
 
+    /**
+     * Last Insert Id
+     * @return string
+     * @throws Exception
+     */
+    public function getLastInsertId(){
+        try {
+            $handler = $this->getHandler();
+            return $handler->lastInsertId();
+        } catch (PDOException $e) {
+            $this->close();
+            throw new Exception($e->getMessage());
+        }
+    }
+
 }
